@@ -10,7 +10,7 @@
   app:behavior_hideable="true"
   app:layout_behavior="@string/bottom_sheet_behavior"
   android:background="#CDDC39"
-  android:fitsSystemWindows="true">
+  >
 
   <TextView
     android:layout_width="match_parent"
