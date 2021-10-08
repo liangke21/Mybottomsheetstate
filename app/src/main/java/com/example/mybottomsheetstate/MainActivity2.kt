@@ -23,7 +23,7 @@ class MainActivity2 : AppCompatActivity() {
         binding = ActivityMain2Binding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
-        navView = binding.navView
+        navView = binding.layout.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main2)
         val appBarConfiguration = AppBarConfiguration(

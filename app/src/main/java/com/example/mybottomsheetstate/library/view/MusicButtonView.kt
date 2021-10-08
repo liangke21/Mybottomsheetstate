@@ -57,14 +57,14 @@ class MusicButtonView : View {
     private var mTxtHeight = 0f
 
     // 总进度
-    private var mTotalProgress = 0
+    private var mTotalProgress = 100
 
     // 当前进度
-    private var mProgress = 0
+    private var mProgress = 40
 
    //是否开启字体显示 默认开启
     private var isDisplayText=true
-
+    private var bulgeRadius = 0f
     constructor(context: Context) : super(context)
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
@@ -90,6 +90,7 @@ class MusicButtonView : View {
         mStrokeWidth = typeArray.getDimension(R.styleable.TasksCompletedView_strokeWidthL, 10f)
         mRingColor = typeArray.getColor(R.styleable.TasksCompletedView_ringColor, -0x1)
         mRingBgColor = typeArray.getColor(R.styleable.TasksCompletedView_ringBgColor, -0x1)
+        bulgeRadius = typeArray.getDimension(R.styleable.TasksCompletedView_bulgeRadius, 1f)
     }
 
     //初始化画笔
@@ -149,16 +150,13 @@ class MusicButtonView : View {
                 false,
                 mRingPaint
             )
-
             //字体
             if (isDisplayText){
                 val txt = mProgress.toString() + "秒"
                 mTxtWidth = mTextPaint.measureText(txt, 0, txt.length)
                 canvas.drawText(txt, mXCenter - mTxtWidth / 2, mYCenter + mTxtHeight / 4, mTextPaint)
             }
-
         }
-
     }
 
     /**
@@ -168,6 +166,7 @@ class MusicButtonView : View {
     fun setTotalProgress(totalProgress:Int){
         this.mTotalProgress = totalProgress
     }
+
     //设置进度变化
     fun setProgress(progress: Int) {
         mProgress = progress
@@ -182,4 +181,9 @@ class MusicButtonView : View {
         this.isDisplayText=isDisplayText
     }
 
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+       val  measuredWidth= widthMeasureSpec-bulgeRadius.toInt()
+        val measuredHeight= heightMeasureSpec-bulgeRadius.toInt()
+        setMeasuredDimension( measuredWidth, measuredHeight)
+    }
 }

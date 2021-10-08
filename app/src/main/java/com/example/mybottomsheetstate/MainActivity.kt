@@ -2,13 +2,11 @@ package com.example.mybottomsheetstate
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.layout_bottom_navigation_view)
 
      /*   findViewById<Button>(R.id.button).setOnClickListener {
 

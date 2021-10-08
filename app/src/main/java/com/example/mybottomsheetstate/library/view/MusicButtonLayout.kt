@@ -9,6 +9,7 @@ import android.os.Handler
 import android.os.Looper
 import android.util.AttributeSet
 import android.util.Log
+import android.view.Gravity
 import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import android.widget.FrameLayout
@@ -44,8 +45,18 @@ class MusicButtonLayout(context: Context, attrs: AttributeSet) : FrameLayout(con
     private var jumpOut = false
 
     init {
+        val protruding=MusicButtonProtruding(context, attrs)
+        this.addView(protruding)
+        val lp1=LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT)
+            lp1.gravity=Gravity.CENTER
+
         mTasksView = MusicButtonView(context, attrs)
+        mTasksView!!.layoutParams=lp1
+
+
         musicButtonViewInnerCircle = MusicButtonViewInnerCircle(context, attrs)
+        musicButtonViewInnerCircle.layoutParams=lp1
+
         init()
         this.addView(mTasksView)
     }
@@ -205,51 +216,6 @@ class MusicButtonLayout(context: Context, attrs: AttributeSet) : FrameLayout(con
     }
 
 
-    override fun getAccessibilityClassName(): CharSequence {
-        return super.getAccessibilityClassName()
-    }
 
-    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
-        super.onLayout(changed, left, top, right, bottom)
-    }
 
-    override fun setForegroundGravity(foregroundGravity: Int) {
-        super.setForegroundGravity(foregroundGravity)
-    }
-
-    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-    }
-
-    override fun checkLayoutParams(p: ViewGroup.LayoutParams?): Boolean {
-        return super.checkLayoutParams(p)
-    }
-
-    override fun generateLayoutParams(attrs: AttributeSet?): LayoutParams {
-        return super.generateLayoutParams(attrs)
-    }
-
-    override fun generateLayoutParams(lp: ViewGroup.LayoutParams?): ViewGroup.LayoutParams {
-        return super.generateLayoutParams(lp)
-    }
-
-    override fun generateDefaultLayoutParams(): LayoutParams {
-        return super.generateDefaultLayoutParams()
-    }
-
-    override fun shouldDelayChildPressedState(): Boolean {
-        return super.shouldDelayChildPressedState()
-    }
-
-    override fun setMeasureAllChildren(measureAll: Boolean) {
-        super.setMeasureAllChildren(measureAll)
-    }
-
-    override fun getConsiderGoneChildrenWhenMeasuring(): Boolean {
-        return super.getConsiderGoneChildrenWhenMeasuring()
-    }
-
-    override fun getMeasureAllChildren(): Boolean {
-        return super.getMeasureAllChildren()
-    }
 }
